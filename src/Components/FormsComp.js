@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react";
 import { Form, Button, Container, Row, Col } from "react-bootstrap";
-import EditorComp from "./EditorComp";
-import JoditEditor, { Jodit } from "jodit-react";
+
+import JoditEditor  from "jodit-react";
 // import imgto64 from "image-to-base64"
 
 function FormsComp() {
@@ -12,7 +12,8 @@ function FormsComp() {
     category: "",
     tags: "",
     keywords: "",
-    images: "",
+    
+   
   });
   //   console.log(Data.title)
   let note, value;
@@ -26,7 +27,7 @@ function FormsComp() {
    
     const imgsubmit = (e)=> {
         console.log(e.target.files);
-        setFile(URL.createObjectURL(e.target.files[0]));}
+        setFile(e.target.files[0]);}
 
   const { author, title, description,  category, tags, keywords } = Data;
   const images = file;
@@ -39,7 +40,7 @@ function FormsComp() {
     const res = await fetch("http://localhost:80/postarticle", {
       method: "POST",
       headers: {
-        // "Content-Type": "application/json",
+       "Content-Type": "application/json",
       },
 
       body: JSON.stringify({
@@ -60,16 +61,16 @@ function FormsComp() {
 
    
  
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
    
-    console.log("Uploaded");
-  };
+  //   console.log("Uploaded");
+  // };
   const editor = useRef(null);
   const [Content, setContent] = useState("");
   var content = Content;
   // var images = postImage;
-  console.log(images);
+  console.log(content);
   return (
     <div>
       <Container>
@@ -238,7 +239,7 @@ function FormsComp() {
               method="POST"
             > */}
               <input type="file" name="image"  onChange={imgsubmit} accept=".png,.jpg,.jpeg,.webp" width={1280} height={720}/>
-              <img src={file} width={120} height={120} />
+              {/* <img src={file} width={120} height={120} /> */}
               
           </Col>
 
