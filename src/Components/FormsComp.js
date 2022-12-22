@@ -79,6 +79,7 @@ function FormsComp() {
                 required
                 type="text"
                 placeholder="Enter file name"
+                
               />
             </Form.Group>
           </Col>
