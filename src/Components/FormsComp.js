@@ -6,12 +6,12 @@ import JoditEditor  from "jodit-react";
 
 function FormsComp() {
   const [Data, setData] = useState({
-    author: "",
-    title: "",
-    description: "",
-    category: "",
-    tags: "",
-    keywords: "",
+    author: " ",
+    title: " ",
+    description: " ",
+    category: " ",
+    tags: " ",
+    keywords: " ",
     
    
   });
@@ -52,6 +52,15 @@ function FormsComp() {
     });
     const json = await res.json();
     console.log(json);
+  const str = JSON.stringify(json);
+  //  const mass = str.filter(/true/g);
+  // if(!mass){window.alert(str)}
+  //   setContent("");
+  //   setFile("");
+  //   setData({author:"", title:"", description:"",  category:"", tags:"", keywords:""})
+    
+   window.alert(str)
+  window.location.reload();
   };
 
    
@@ -79,7 +88,7 @@ function FormsComp() {
                 required
                 type="text"
                 placeholder="Enter file name"
-                
+                disabled
               />
             </Form.Group>
           </Col>
@@ -95,6 +104,7 @@ function FormsComp() {
                 required
                 className="custom-select mr-sm-2"
                 id="inlineFormCustomSelect"
+                disabled
               >
                 <option default>Select Provider Name</option>
                 <option value="1">One</option>
@@ -120,7 +130,7 @@ function FormsComp() {
               <Form.Label>
                 Place <span>*</span>:
               </Form.Label>
-              <Form.Control required type="text" placeholder="Reported by" />
+              <Form.Control required type="text" placeholder="Reported by" disabled />
             </Form.Group>
           </Col>
         </Row>
@@ -130,19 +140,20 @@ function FormsComp() {
             <Form.Label>
               Home Title <span>*</span>:
             </Form.Label>
-            <Form.Control required type="text" placeholder="Enter Home Title" />
+            <Form.Control required type="text" placeholder="Enter Home Title" disabled/>
           </Form.Group>
         </Row>
 
         <Row>
-          <Form.Group className="mb-3" controlId="Mobiletitle">
+          <Form.Group className="mb-3" controlId="Mobiletitle" >
             <Form.Label>
               Mobile Title <span>(+ UC Browser : 70 Characters)*</span>:
             </Form.Label>
             <Form.Control
-              required
+              
               type="text"
               placeholder="Enter Mobile Title"
+              disabled
             />
           </Form.Group>
         </Row>
@@ -184,7 +195,7 @@ function FormsComp() {
             <Form.Label>
               Meta Title <span>(Hindi + English)*</span>:
             </Form.Label>
-            <Form.Control required type="text" placeholder="Enter Meta Title" />
+            <Form.Control disabled type="text" placeholder="Enter Meta Title" />
           </Form.Group>
         </Row>
 
@@ -245,7 +256,7 @@ function FormsComp() {
                 Image Alt Tag <span>*</span>:
               </Form.Label>
               <Form.Control
-                required
+                disabled
                 type="text"
                 placeholder="Enter Image Alt Tag"
               />
@@ -258,7 +269,7 @@ function FormsComp() {
                 Image Caption <span>*</span>:
               </Form.Label>
               <Form.Control
-                required
+                disabled
                 type="text"
                 placeholder="Enter Image Caption"
               />
@@ -272,7 +283,7 @@ function FormsComp() {
               <Form.Label>
                 Video Path <span>*</span>:
               </Form.Label>
-              <Form.Control required type="text" />
+              <Form.Control disabled type="text" />
             </Form.Group>
           </Col>
 
@@ -281,7 +292,7 @@ function FormsComp() {
               <Form.Label>
                 Photo Credit <span>*</span>:
               </Form.Label>
-              <Form.Control required type="text" />
+              <Form.Control disabled type="text" />
             </Form.Group>
           </Col>
         </Row>
@@ -375,6 +386,7 @@ function FormsComp() {
           />
         </div>
       </Container>
+      
     </div>
   );
 }
