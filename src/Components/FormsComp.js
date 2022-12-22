@@ -30,32 +30,27 @@ function FormsComp() {
         setFile(e.target.files[0]);}
 
   const { author, title, description,  category, tags, keywords } = Data;
-  const images = file;
+  const uploads = file;
   
-  console.log(images);
+  console.log(uploads);
   console.log(Data);
   const addar = async (e) => {
     e.preventDefault();
-
-    const res = await fetch("http://localhost:80/postarticle", {
+    const formdata=new FormData();
+    formdata.append('author',author);
+    formdata.append('title',title);
+    formdata.append('description',description);
+    formdata.append('uploads',uploads);
+    formdata.append('content',content);
+    formdata.append('category',category);
+    formdata.append('tags',tags);
+    formdata.append('keywords',keywords);
+    
+    const res = await fetch("https://epatrakaar.onrender.com/postarticle", {
       method: "POST",
-      headers: {
-       "Content-Type": "application/json",
-      },
-
-      body: JSON.stringify({
-        author,
-        title,
-        description,
-        images,
-        content,
-        category,
-        tags,
-        keywords,
-      }),
+      body: formdata,
     });
     const json = await res.json();
-
     console.log(json);
   };
 
